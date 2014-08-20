@@ -26,6 +26,19 @@ module Hydramata
           expect(subject.translate('child', default: 'default')).to eq('With Default')
         end
 
+        it 'swallows defaults except on the final rendering' do
+          scopes = [['parent']]
+          expect(translation_service).to receive(:translate).
+            with('child', scope: (base_scope + scopes[0]), raise: true, other_key: 'other').
+            ordered.
+            and_raise(translation_service_error)
+          expect(translation_service).to receive(:translate).
+            with('child', scope: base_scope, other_key: 'other', default: 'Shine On').
+            ordered.
+            and_return('My Work Type')
+          expect(subject.translate('child', scopes: scopes, other_key: 'other', default: 'Shine On'))
+        end
+
         it 'attempts to translate through each scope then finally via the base scope' do
           expect(translation_service).to receive(:translate).
             with('child', scope: (base_scope + scopes[0]), raise: true, other_key: 'other').
@@ -36,7 +49,7 @@ module Hydramata
             ordered.
             and_raise(translation_service_error)
           expect(translation_service).to receive(:translate).
-            with('child', scope: base_scope, scopes: scopes, other_key: 'other').
+            with('child', scope: base_scope, other_key: 'other').
             ordered.
             and_return('My Work Type')
 
@@ -68,7 +81,7 @@ module Hydramata
             ordered.
             and_raise(translation_service_error)
           expect(translation_service).to_not receive(:translate).
-            with('child', scope: base_scope, scopes: scopes).
+            with('child', scope: base_scope).
             ordered.
             and_raise(translation_service_error)
 

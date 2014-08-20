@@ -33,6 +33,7 @@ module Hydramata
           begin
             options_to_use = options.merge(scope: base_scope + Array.wrap(scope), raise: true)
             options_to_use.delete(:scopes)
+            options_to_use.delete(:default)
             returning_value = translation_service.translate(key, options_to_use)
             break
           rescue *translation_service_error
@@ -43,8 +44,9 @@ module Hydramata
       end
 
       def translate_key_for_general_case(key, options = {})
-        options[:scope] = base_scope
-        translation_service.translate(key, options)
+        options_to_use = options.merge(scope: base_scope)
+        options_to_use.delete(:scopes)
+        translation_service.translate(key, options_to_use)
       end
 
       def base_scope=(values)
