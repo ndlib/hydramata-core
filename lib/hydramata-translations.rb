@@ -1,4 +1,4 @@
-require 'hydramata/translations/engine' if defined?(Rails)
+require 'hydramata/translations/railtie' if defined?(Rails)
 module Hydramata
   # Responsible for providing a well defined data-structure to ease the
   # interaction between differing layers of an application.
