@@ -1,0 +1,8 @@
+en:
+  other:
+    my_message_key: 'No thank you %{name}!'
+    nested:
+      my_message_key: 'Thanks but no thanks %{name}!'
+  hydramata:
+    translations:
+      my_message_key: 'Thanks %{name}!'

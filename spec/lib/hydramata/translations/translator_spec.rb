@@ -28,19 +28,19 @@ module Hydramata
 
         it 'attempts to translate through each scope then finally via the base scope' do
           expect(translation_service).to receive(:translate).
-            with('child', scope: (base_scope + scopes[0]), raise: true).
+            with('child', scope: (base_scope + scopes[0]), raise: true, other_key: 'other').
             ordered.
             and_raise(translation_service_error)
           expect(translation_service).to receive(:translate).
-            with('child', scope: (base_scope + scopes[1]), raise: true).
+            with('child', scope: (base_scope + scopes[1]), raise: true, other_key: 'other').
             ordered.
             and_raise(translation_service_error)
           expect(translation_service).to receive(:translate).
-            with('child', scope: base_scope, scopes: scopes).
+            with('child', scope: base_scope, scopes: scopes, other_key: 'other').
             ordered.
             and_return('My Work Type')
 
-          expect(subject.translate('child', scopes: scopes)).to eq('My Work Type')
+          expect(subject.translate('child', scopes: scopes, other_key: 'other')).to eq('My Work Type')
         end
 
         it 'translates through each scope until it finds a match then returns without processing more generic case' do

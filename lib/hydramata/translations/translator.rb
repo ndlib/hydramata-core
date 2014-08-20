@@ -1,3 +1,5 @@
+require 'active_support/core_ext/array/wrap'
+
 module Hydramata
   module Translations
     # Responsible for handling the translation via diminishing specificity
@@ -29,7 +31,9 @@ module Hydramata
         returning_value = nil
         Array.wrap(scopes).each do |scope|
           begin
-            returning_value = translation_service.translate(key, scope: base_scope + Array.wrap(scope),raise: true)
+            options_to_use = options.merge(scope: base_scope + Array.wrap(scope), raise: true)
+            options_to_use.delete(:scopes)
+            returning_value = translation_service.translate(key, options_to_use)
             break
           rescue *translation_service_error
             next
