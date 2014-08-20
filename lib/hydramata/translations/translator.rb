@@ -48,7 +48,7 @@ module Hydramata
       end
 
       def default_base_scope
-        ['hydramata', 'work']
+        ['hydramata', 'translations']
       end
 
       def default_translation_service_error
