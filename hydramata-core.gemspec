@@ -28,6 +28,7 @@ Gem::Specification.new do |s|
   s.require_paths = ['lib']
 
   s.add_development_dependency 'rspec', '~> 3.0'
+  s.add_development_dependency 'rspec-given', '~> 3.5'
   s.add_development_dependency 'sqlite3', '~> 1.3'
   s.add_development_dependency 'rubydora', '~> 1.7'
   s.add_development_dependency 'database_cleaner', '~> 1.3'

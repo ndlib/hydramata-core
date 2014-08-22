@@ -18,6 +18,7 @@
 #     user  0m2.800s
 #     sys   0m0.667s
 
+require 'rspec-given'
 unless defined?(Rails) # If we are in a Rails context this is overkill.
   Dir[File.expand_path('../../app/*', __FILE__)].each do |dir|
     $LOAD_PATH << dir
