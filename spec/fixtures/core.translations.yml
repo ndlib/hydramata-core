@@ -4,5 +4,5 @@ en:
     nested:
       my_message_key: 'Thanks but no thanks %{name}!'
   hydramata:
-    translations:
+    core:
       my_message_key: 'Thanks %{name}!'

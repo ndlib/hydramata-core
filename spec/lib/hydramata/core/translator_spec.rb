@@ -1,8 +1,8 @@
 require 'spec_fast_helper'
-require 'hydramata/translations/translator'
+require 'hydramata/core/translator'
 
 module Hydramata
-  module Translations
+  module Core
     describe Translator do
       subject do
         described_class.new(
@@ -11,7 +11,7 @@ module Hydramata
           translation_service_error: translation_service_error
         )
       end
-      let(:base_scope) { ['hydramata', 'translations'] }
+      let(:base_scope) { ['hydramata', 'core'] }
       let(:scopes) { [['grandparent', 'parent'], ['grandparent']] }
       let(:translation_service) { double('TranslationService', translate: true) }
       let(:translation_service_error) { ArgumentError }

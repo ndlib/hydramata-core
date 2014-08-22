@@ -1,5 +1,5 @@
 module Hydramata
-  module Translations
+  module Core
     class Railtie
     end
   end
