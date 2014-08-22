@@ -1,9 +1,9 @@
 require 'spec_fast_helper'
 require 'i18n'
-require 'hydramata/translations/translator'
+require 'hydramata/core/translator'
 
 module Hydramata
-  module Translations
+  module Core
     describe 'Translation services' do
 
       it 'allows overriding the :base_scope and nested lookup of scopes' do
@@ -22,8 +22,8 @@ module Hydramata
           # somewhat counter-intuitive.
           old_backend = I18n.backend
           I18n.backend = old_backend.clone
-          translations = Psych.load_file(File.expand_path('../../fixtures/translations.yml', __FILE__))
-          I18n.backend.store_translations(:en, translations.fetch('en'))
+          core = Psych.load_file(File.expand_path('../../fixtures/core.translations.yml', __FILE__))
+          I18n.backend.store_translations(:en, core.fetch('en'))
           example.run
         ensure
           I18n.backend = old_backend

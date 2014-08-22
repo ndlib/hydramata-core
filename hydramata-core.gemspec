@@ -1,19 +1,19 @@
 $LOAD_PATH.push File.expand_path('../lib', __FILE__)
 
 # Maintain your gem's version:
-require 'hydramata/translations/version'
+require 'hydramata/core/version'
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
-  s.name = 'hydramata-translations'
-  s.version     = Hydramata::Translations::VERSION
+  s.name = 'hydramata-core'
+  s.version     = Hydramata::Core::VERSION
   s.authors     = [
     'Jeremy Friesen'
   ]
   s.email       = [
     'jeremy.n.friesen@gmail.com'
   ]
-  s.homepage    = 'https://github.com/ndlib/hydramata-translations'
+  s.homepage    = 'https://github.com/ndlib/hydramata-core'
   s.summary     = ''
   s.description = ''
   s.required_ruby_version = '~> 2.0'

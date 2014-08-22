@@ -1,7 +1,7 @@
 require 'active_support/core_ext/array/wrap'
 
 module Hydramata
-  module Translations
+  module Core
     # Responsible for handling the translation via diminishing specificity
     class Translator
 
@@ -54,7 +54,7 @@ module Hydramata
       end
 
       def default_base_scope
-        ['hydramata', 'translations']
+        ['hydramata', 'core']
       end
 
       def default_translation_service_error

@@ -1,7 +1,7 @@
 require 'spec_fast_helper'
-require 'hydramata-translations'
+require 'hydramata-core'
 
 module Hydramata
-  describe Translations do
+  describe Core do
   end
 end
