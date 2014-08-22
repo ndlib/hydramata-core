@@ -5,7 +5,8 @@ module Hydramata
   module Core
 
     describe Runner do
-      Given(:context) { double(invoked: true) }
+      Given(:context) { double(invoked: true, services: services) }
+      Given(:services) { double('Services') }
       Given(:runner) {
         described_class.new(context) do |on|
           on.success { |a, b| context.invoked("SUCCESS", a, b) }
@@ -16,6 +17,11 @@ module Hydramata
 
       Invariant { runner.context == context }
 
+      context '#services' do
+        it 'delegates to the context' do
+          expect(runner.services).to eq(services)
+        end
+      end
       context "#run" do
         it 'is an abstract method' do
           expect { runner.run }.to raise_error(NotImplementedError)

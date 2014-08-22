@@ -23,7 +23,7 @@ module Hydramata
 
       def initialize(context, collaborators = {})
         @callbacks = collaborators.fetch(:callbacks) { default_callbacks }
-        @context = context
+        self.context = context
         yield(@callbacks) if block_given?
       end
 
@@ -32,8 +32,18 @@ module Hydramata
         args
       end
 
+      def services
+        context.services
+      end
+
       def run(*args)
         raise NotImplementedError.new("You must define #{self.class}#run")
+      end
+      protected
+
+      def context=(object)
+        raise RuntimeError.new("Expected #{object.inspect} to implement #services") unless object.respond_to?(:services)
+        @context = object
       end
 
       private
