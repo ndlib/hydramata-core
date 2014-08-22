@@ -2,7 +2,7 @@ require 'active_support/core_ext/array/wrap'
 
 module Hydramata
   module Core
-    # Responsible for handling the translation via diminishing specificity
+    # Responsible for handling the translation via diminishing specificity.
     class Translator
 
       class << self

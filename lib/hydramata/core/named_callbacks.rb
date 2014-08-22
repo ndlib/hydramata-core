@@ -1,5 +1,6 @@
 module Hydramata
   module Core
+    # Responsible for registering blocks used for callbacks.
     class NamedCallbacks
       def initialize
         @callbacks = {}
