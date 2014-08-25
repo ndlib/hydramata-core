@@ -14,6 +14,8 @@ module Hydramata
     # make changes to the "inner method"  of a route. In some ways, I see this as
     # a separation of state change and response; a somewhat analogous separation
     # to the Command/Query separation principle.
+    #
+    # @See Services
     class Runner
       attr_reader :context
 
