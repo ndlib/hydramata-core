@@ -1,10 +1,10 @@
 require 'hydramata/core/railtie' if defined?(Rails)
 
 module Hydramata
+  if defined?(ActiveSupport::Autoload)
+    extend ActiveSupport::Autoload
+    autoload :Services
+  end
   module Core
-    if defined?(ActiveSupport::Autoload)
-      extend ActiveSupport::Autoload
-      autoload :Services
-    end
   end
 end
