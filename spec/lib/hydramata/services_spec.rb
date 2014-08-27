@@ -16,5 +16,12 @@ module Hydramata
         require 'hydramata/services'
       end.to change { Services.included_modules.include?(MockServices) }.from(false).to(true)
     end
+
+    context '#translator' do
+      Given(:context) { double('Context') }
+      Given(:service) { Services.new(context) }
+      Then { service.context == context }
+    end
+
   end
 end

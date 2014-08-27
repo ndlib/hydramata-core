@@ -12,6 +12,10 @@ module Hydramata
   #
   # @see Runner
   class Services
+    def initialize(context)
+      @context = context
+    end
+    attr_reader :context
   end
   ActiveSupport.run_load_hooks(:hydramata_services, Services)
 end
