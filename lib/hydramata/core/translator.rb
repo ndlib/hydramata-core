@@ -36,7 +36,8 @@ module Hydramata
             options_to_use.delete(:default)
             returning_value = translation_service.translate(key, options_to_use)
             break
-          rescue *translation_service_error
+          rescue *translation_service_error => e
+            STDOUT.puts(e) if ENV['DEBUG_TRANSLATIONS']
             next
           end
         end
