@@ -37,7 +37,7 @@ module Hydramata
             returning_value = translation_service.translate(key, options_to_use)
             break
           rescue *translation_service_error => e
-            STDOUT.puts(e) if ENV['DEBUG_TRANSLATIONS']
+            STDOUT.puts(e) if ENV['DEBUG']
             next
           end
         end
