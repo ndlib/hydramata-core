@@ -28,7 +28,6 @@ module Hydramata
     # Hydra::RemoteIdentifier::Railtie to handle the configure! call
     configure! unless defined?(Rails)
   end
-  attr_accessor :configuration
 
   def configure!
     if @configuration_block.respond_to?(:call)
