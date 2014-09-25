@@ -31,7 +31,6 @@ module Hydramata
 
   def configure!
     if @configuration_block.respond_to?(:call)
-      self.configuration ||= Configuration.new
       @configuration_block.call(configuration)
       @configuration_block = nil
     end
